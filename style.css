@@ -1,0 +1,283 @@
+/* ===============================
+   GLOBAL RESET
+================================*/
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+background:
+radial-gradient(circle at 20% 20%,#1a0033,#000814 60%);
+overflow:hidden;
+color:white;
+}
+
+/* ===============================
+   BACKGROUND GLOW PARTICLES
+================================*/
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:
+radial-gradient(circle,#ff4da633 1px,transparent 1px);
+background-size:60px 60px;
+animation:moveBg 40s linear infinite;
+z-index:-1;
+}
+
+@keyframes moveBg{
+from{transform:translate(0,0);}
+to{transform:translate(-200px,-200px);}
+}
+
+/* ===============================
+   START SCREEN (GLASS STYLE)
+================================*/
+
+#startScreen{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+#startBtn{
+padding:20px 50px;
+font-size:22px;
+border-radius:60px;
+border:1px solid rgba(255,255,255,.2);
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+
+color:white;
+cursor:pointer;
+
+box-shadow:
+0 0 25px rgba(255,105,180,.4),
+inset 0 0 20px rgba(255,255,255,.1);
+
+transition:.5s;
+animation:floatBtn 3s ease-in-out infinite;
+}
+
+#startBtn:hover{
+transform:scale(1.15);
+box-shadow:
+0 0 50px #ff4da6,
+inset 0 0 25px white;
+}
+
+@keyframes floatBtn{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+/* ===============================
+   PETALS
+================================*/
+
+#petals{
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+
+.petal{
+position:absolute;
+width:18px;
+height:18px;
+background:linear-gradient(45deg,#ff4da6,#ffc0cb);
+border-radius:50%;
+opacity:.8;
+filter:blur(.5px);
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-100px) rotate(0deg);
+opacity:0;
+}
+20%{opacity:1;}
+100%{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+}
+
+/* ===============================
+   HEART SECTION
+================================*/
+
+.hidden{display:none;}
+
+#heartSection{
+text-align:center;
+margin-top:80px;
+animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* GLASS HEART CONTAINER */
+
+.heart{
+width:180px;
+margin:auto;
+padding:20px;
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(25px);
+border-radius:30px;
+
+box-shadow:
+0 0 40px rgba(255,0,120,.5),
+inset 0 0 20px rgba(255,255,255,.2);
+}
+
+/* HEART SVG */
+
+.heart svg{
+width:100%;
+animation:beat 1.2s infinite ease-in-out;
+filter:drop-shadow(0 0 35px #ff4da6);
+}
+
+@keyframes beat{
+0%{transform:scale(1);}
+50%{transform:scale(1.18);}
+100%{transform:scale(1);}
+}
+
+/* TYPING TEXT */
+
+#typing{
+margin-top:25px;
+font-size:34px;
+letter-spacing:2px;
+background:linear-gradient(45deg,#ff4da6,#ffd6f6);
+-webkit-background-clip:text;
+color:transparent;
+text-shadow:0 0 20px pink;
+}
+
+/* ===============================
+   BUTTON GLASS STYLE
+================================*/
+
+button{
+margin-top:30px;
+padding:14px 35px;
+border-radius:40px;
+border:1px solid rgba(255,255,255,.3);
+
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(15px);
+
+color:white;
+font-size:18px;
+cursor:pointer;
+
+transition:.4s;
+
+box-shadow:
+0 0 20px rgba(255,105,180,.4);
+}
+
+button:hover{
+transform:translateY(-5px) scale(1.08);
+box-shadow:0 0 45px #ff4da6;
+}
+
+/* ===============================
+   LETTER (PREMIUM GLASS)
+================================*/
+
+#envelopeSection{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+animation:fadeIn 1.5s ease;
+}
+
+.envelope{
+width:90%;
+max-width:700px;
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(35px);
+
+border-radius:25px;
+padding:30px;
+
+border:1px solid rgba(255,255,255,.2);
+
+box-shadow:
+0 10px 60px rgba(255,0,120,.4),
+inset 0 0 25px rgba(255,255,255,.15);
+
+animation:letterRise 1.5s ease;
+}
+
+@keyframes letterRise{
+from{
+opacity:0;
+transform:translateY(200px) scale(.9);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+/* ===============================
+   SCROLL AREA
+================================*/
+
+.scroll{
+height:420px;
+overflow-y:auto;
+line-height:1.8;
+font-size:17px;
+padding-right:10px;
+}
+
+/* CLASSY SCROLLBAR */
+
+.scroll::-webkit-scrollbar{
+width:6px;
+}
+
+.scroll::-webkit-scrollbar-thumb{
+background:linear-gradient(#ff4da6,#ffd6f6);
+border-radius:20px;
+}
+
+/* ===============================
+   MOBILE
+================================*/
+
+@media(max-width:600px){
+
+#typing{
+font-size:24px;
+}
+
+.scroll{
+height:350px;
+font-size:15px;
+}
+}
